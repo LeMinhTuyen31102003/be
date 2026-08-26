@@ -1,5 +1,9 @@
 package be.spring.vanconhung.entity;
 
+import java.time.Instant;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -34,10 +38,25 @@ public class User {
     @Column(name = "full_name")
     private String fullName;
 
+    private String grade;
+
+    @Column(name = "school_name")
+    private String schoolName;
+
+    @Column(name = "parent_name")
+    private String parentName;
+
+    @Column(name = "parent_phone")
+    private String parentPhone;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
     @Column(nullable = false)
     private boolean enabled = true;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
+    private Instant createdAt;
 }

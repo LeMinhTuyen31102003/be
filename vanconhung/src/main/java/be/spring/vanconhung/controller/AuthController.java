@@ -48,14 +48,15 @@ public class AuthController {
                 .orElseThrow(() -> new BadCredentialsException("Tên đăng nhập hoặc mật khẩu không đúng"));
 
         String token = jwtService.generateToken(userDetails);
-        return ResponseEntity.ok(new LoginResponse(token, user.getUsername(), user.getRole().name()));
+        return ResponseEntity
+                .ok(new LoginResponse(token, user.getUsername(), user.getFullName(), user.getRole().name()));
     }
 
     @GetMapping("/me")
     public ResponseEntity<LoginResponse> me(@AuthenticationPrincipal UserDetails userDetails) {
         User user = userRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow(() -> new BadCredentialsException("Người dùng không tồn tại"));
-        return ResponseEntity.ok(new LoginResponse(null, user.getUsername(), user.getRole().name()));
+        return ResponseEntity.ok(new LoginResponse(null, user.getUsername(), user.getFullName(), user.getRole().name()));
     }
 
     @ExceptionHandler({ BadCredentialsException.class, DisabledException.class })

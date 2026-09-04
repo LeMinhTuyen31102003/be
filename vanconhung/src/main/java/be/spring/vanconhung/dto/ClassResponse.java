@@ -10,6 +10,7 @@ public record ClassResponse(
         String grade,
         List<ScheduleSlotResponse> schedules,
         String note,
+        Long feePerSession,
         boolean active,
         int studentCount) {
 
@@ -20,6 +21,7 @@ public record ClassResponse(
                 classRoom.getGrade(),
                 classRoom.getSchedules().stream().map(ScheduleSlotResponse::from).toList(),
                 classRoom.getNote(),
+                classRoom.getFeePerSession(),
                 classRoom.isActive(),
                 classRoom.getStudents().size());
     }

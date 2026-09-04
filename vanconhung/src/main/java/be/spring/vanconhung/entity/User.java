@@ -38,6 +38,12 @@ public class User {
     @Column(name = "full_name")
     private String fullName;
 
+    private String email;
+
+    private String phone;
+
+    private String address;
+
     private String grade;
 
     @Column(name = "school_name")

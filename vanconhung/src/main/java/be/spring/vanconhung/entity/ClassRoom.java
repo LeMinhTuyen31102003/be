@@ -39,6 +39,9 @@ public class ClassRoom {
 
     private String note;
 
+    @Column(name = "fee_per_session")
+    private Long feePerSession;
+
     @Column(nullable = false)
     private boolean active = true;
 

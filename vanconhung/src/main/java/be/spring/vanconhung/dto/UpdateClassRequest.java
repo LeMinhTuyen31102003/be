@@ -8,5 +8,6 @@ public record UpdateClassRequest(
         @NotBlank String name,
         String grade,
         List<ScheduleSlotInput> schedules,
-        String note) {
+        String note,
+        Long feePerSession) {
 }
